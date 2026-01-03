@@ -1,1 +1,1 @@
-web: cd EdgeVoice_Project/backend && python app.py
+web: python EdgeVoice_Project/backend/app.py
