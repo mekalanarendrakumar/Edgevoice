@@ -1,0 +1,419 @@
+.edgevoice-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FFB6C1 0%, #FFD6E0 100%);
+  animation: bg-color-shift 10s ease-in-out infinite;
+  color: #fff;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes bg-color-shift {
+  0%, 100% {
+    background: linear-gradient(135deg, #FFB6C1 0%, #FFD6E0 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #ADD8E6 0%, #B0E0E6 100%);
+  }
+}
+
+.edgevoice-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.edgevoice-bg-anim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(176, 224, 230, 0.2) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: cosmic-drift 15s ease-in-out infinite;
+}
+
+@keyframes cosmic-drift {
+  0%, 100% { 
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(176, 224, 230, 0.2) 0%, transparent 60%);
+  }
+  50% { 
+    background: 
+      radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 30% 80%, rgba(173, 216, 230, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 60% 40%, rgba(176, 224, 230, 0.3) 0%, transparent 60%);
+  }
+}
+
+/* Header */
+.edgevoice-header {
+  font-size: 2.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8),
+               0 0 20px rgba(138, 43, 226, 0.6),
+               0 0 30px rgba(255, 0, 128, 0.4);
+  background: linear-gradient(135deg, #ff0080, #8a2be2, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+/* Status and Info Text */
+.edgevoice-status {
+  text-align: center;
+  font-size: 1.1em;
+  color: #00ffff;
+  margin: 1.5rem 0;
+  min-height: 1.5em;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.edgevoice-shape {
+  text-align: center;
+  color: #ffb6ff;
+  font-size: 0.95em;
+  margin: 0.5rem 0;
+  text-shadow: 0 0 8px rgba(255, 182, 255, 0.5);
+}
+
+/* Control Buttons */
+.edgevoice-btn {
+  background: rgba(138, 43, 226, 0.2);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  border: 2px solid rgba(138, 43, 226, 0.6);
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 0.5rem;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5),
+              0 0 40px rgba(138, 43, 226, 0.2),
+              inset 0 0 20px rgba(138, 43, 226, 0.1);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.edgevoice-btn:hover {
+  border-color: rgba(255, 0, 128, 0.8);
+  box-shadow: 0 0 30px rgba(255, 0, 128, 0.7),
+              0 0 60px rgba(255, 0, 128, 0.4),
+              inset 0 0 30px rgba(255, 0, 128, 0.2);
+  transform: translateY(-2px);
+}
+
+.edgevoice-btn.selected {
+  border-color: rgba(0, 255, 136, 0.8);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.7),
+              0 0 60px rgba(0, 255, 136, 0.4);
+}
+
+/* Top Controls */
+.edgevoice-top-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Panels */
+.neon-glow,
+.ev-mic-panel,
+.ev-heatmap-panel,
+.ev-stats-panel,
+.ev-ww-panel {
+  background: rgba(15, 5, 30, 0.6);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(138, 43, 226, 0.5);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 900px;
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.4),
+              0 0 60px rgba(255, 0, 128, 0.2),
+              inset 0 0 40px rgba(138, 43, 226, 0.05);
+}
+
+.neon-glow-cyan {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4),
+              0 0 60px rgba(0, 212, 255, 0.2);
+}
+
+.neon-glow-green {
+  border-color: rgba(0, 255, 136, 0.6);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.5),
+              0 0 60px rgba(0, 255, 136, 0.3);
+}
+
+/* Micro Panel */
+.ev-mic-title,
+.ev-heatmap-title,
+.ev-stats-list > div:first-child {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #ffb6ff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(255, 182, 255, 0.6);
+}
+
+.ev-mic-waveform {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 0.5rem;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Heatmap Panel */
+.ev-heatmap-panel {
+  position: relative;
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4),
+              0 0 60px rgba(0, 212, 255, 0.2);
+}
+
+.ev-heatmap-plot {
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Wake Word Detection Box (on heatmap) */
+.ev-heatmap-ww-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 255, 128, 0.15);
+  border: 2px solid rgba(0, 255, 128, 0.6);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0, 255, 128, 0.6);
+  max-width: 280px;
+  backdrop-filter: blur(10px);
+  line-height: 1.5;
+}
+
+.ev-ww-label {
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+  font-weight: 700;
+}
+
+.ev-ww-green {
+  color: #00ff88;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+  font-weight: bold;
+}
+
+.ev-ww-key {
+  color: #ffff00;
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.6);
+  font-weight: bold;
+}
+
+.ev-ww-yellow {
+  color: #ffff00;
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.5);
+}
+
+/* Wake Word Detection Panel */
+.ev-ww-panel {
+  border: 2px solid rgba(0, 255, 136, 0.6);
+  background: rgba(0, 30, 15, 0.8);
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.5),
+              0 0 80px rgba(0, 255, 136, 0.3),
+              inset 0 0 40px rgba(0, 255, 136, 0.1);
+  animation: wake-word-pulse 1.5s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes wake-word-pulse {
+  0%, 100% {
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.5),
+                0 0 80px rgba(0, 255, 136, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(0, 255, 136, 0.7),
+                0 0 100px rgba(0, 255, 136, 0.5);
+  }
+}
+
+.ev-ww-panel .ev-ww-label {
+  display: block;
+  font-size: 1.8em;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.ev-ww-icon {
+  width: 80px;
+  height: 80px;
+  margin: 1rem auto 0;
+  opacity: 0.8;
+}
+
+.ev-ww-icon img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.8));
+}
+
+/* Stats Panel */
+.ev-stats-panel {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.ev-stats-list {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 1rem;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.ev-stats-list div {
+  color: #00ffff;
+  font-size: 0.9em;
+  margin: 0.6rem 0;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  font-family: 'Courier New', monospace;
+}
+
+.ev-stats-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.ev-stats-download-btn {
+  background: rgba(0, 212, 255, 0.15);
+  border: 2px solid rgba(0, 212, 255, 0.6);
+  color: #00d4ff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 212, 255, 0.6);
+}
+
+.ev-stats-download-btn:hover {
+  border-color: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.neon-glow-cyan {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4),
+              0 0 60px rgba(0, 212, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .edgevoice-header {
+    font-size: 1.8em;
+  }
+
+  .edgevoice-top-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .edgevoice-btn {
+    width: 100%;
+  }
+
+  .ev-stats-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .ev-heatmap-ww-box {
+    font-size: 0.75em;
+    padding: 10px 12px;
+  }
+}
+
+/* Results Title */
+.ev-results-title {
+  text-align: center;
+  color: #00ff88;
+  font-size: 1.3em;
+  margin: 1.5rem 0;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+/* Panel Title */
+.ev-panel-title {
+  color: #ffb6ff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.7em;
+  text-shadow: 0 0 10px rgba(255, 182, 255, 0.5);
+}
+
+/* Waveform Panel */
+.ev-waveform-panel {
+  background: rgba(80, 30, 60, 0.4);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 0, 128, 0.5);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.ev-waveform-plot {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Stats Content */
+.ev-stats-content {
+  color: #fff;
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+.ev-stats-content div {
+  margin: 8px 0;
+}
+
+.ev-stats-content strong {
+  color: #ffb6ff;
+}

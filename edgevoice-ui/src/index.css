@@ -1,0 +1,402 @@
+/* --- Real-Time MFCC Heatmap --- */
+.ev-heatmap-panel {
+  background: linear-gradient(135deg, #1a0022 80%, #00fff0 100%);
+  border-radius: 2.2em;
+  box-shadow: 0 0 32px #00fff0, 0 0 64px #fff2, 0 0 2px #fff2;
+  padding: 2.2em 2.5em 2.5em 2.5em;
+  margin-bottom: 2.5em;
+  width: 900px;
+  max-width: 98vw;
+  position: relative;
+  z-index: 2;
+}
+.ev-heatmap-title {
+  color: #fff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 8px #00fff0, 0 0 2px #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.ev-heatmap-plot {
+  width: 100%;
+  height: 220px;
+  border-radius: 1.2em;
+  box-shadow: 0 0 24px #00fff0, 0 0 2px #fff2;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+.ev-heatmap-ww-box {
+  position: absolute;
+  left: 30%;
+  top: 30px;
+  background: linear-gradient(90deg, #00ffae 0%, #1a0022 100%);
+  color: #fff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 1.2em;
+  padding: 1.1em 2.2em;
+  box-shadow: 0 0 16px #00fff0, 0 0 2px #fff;
+  z-index: 4;
+  border: 2px solid #fff3;
+  text-shadow: 0 0 4px #fff, 0 0 2px #00fff0;
+  min-width: 320px;
+}
+.ev-heatmap-ww-box .ev-ww-green {
+  color: #00ffae;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+.ev-heatmap-ww-box .ev-ww-yellow {
+  color: #ffe600;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+.ev-heatmap-ww-box .ev-ww-key {
+  color: #00ffae;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+.ev-heatmap-ww-box .ev-ww-label {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* --- Wake Word Detected Panel --- */
+.ev-ww-panel {
+  background: linear-gradient(90deg, #00ffae 0%, #1a0022 100%);
+  border-radius: 1.5em;
+  box-shadow: 0 0 32px #00ffae, 0 0 64px #fff2, 0 0 2px #fff2;
+  padding: 1.5em 2.2em;
+  margin-bottom: 2.5em;
+  width: 900px;
+  max-width: 98vw;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px #00ffae, 0 0 2px #fff;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+.ev-ww-panel .ev-ww-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00fff0 0%, #ff0080 100%);
+  box-shadow: 0 0 32px #00fff0, 0 0 64px #ff0080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+.ev-ww-panel .ev-ww-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.ev-ww-panel .ev-ww-label {
+  font-size: 2.1rem;
+  color: #00ffae;
+  font-weight: bold;
+  margin-bottom: 0.2em;
+  text-shadow: 0 0 8px #00ffae, 0 0 2px #fff;
+}
+.ev-ww-panel .ev-ww-key {
+  color: #ffe600;
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+.ev-ww-panel .ev-ww-info {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-top: 0.2em;
+}
+
+/* --- MFCC Statistics & Download --- */
+.ev-stats-panel {
+  background: none;
+  border-radius: 1.5em;
+  margin-bottom: 2.5em;
+  width: 900px;
+  max-width: 98vw;
+  position: relative;
+  z-index: 2;
+  color: #ffb6ff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px #ff0080, 0 0 2px #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+}
+.ev-stats-list {
+  flex: 1;
+  color: #ffb6ff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px #ff0080, 0 0 2px #fff;
+}
+.ev-stats-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  margin-top: 0.5em;
+}
+.ev-stats-download-btn {
+  background: linear-gradient(90deg, #00fff0 0%, #ff0080 100%);
+  color: #fff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 1.2em;
+  padding: 0.5em 1.6em;
+  box-shadow: 0 0 16px #00fff0, 0 0 2px #fff;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.ev-stats-download-btn svg {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 4px #fff8);
+}
+.ev-stats-download-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 24px #00fff0, 0 0 48px #fff;
+}
+/* --- Live Microphone Streaming Panel --- */
+.ev-mic-panel {
+  background: linear-gradient(135deg, #1a0022 80%, #ff0080 100%);
+  border-radius: 2.2em;
+  box-shadow: 0 0 32px #ff0080, 0 0 64px #fff2, 0 0 2px #fff2;
+  padding: 2.2em 2.5em 2.5em 2.5em;
+  margin-bottom: 2.5em;
+  width: 900px;
+  max-width: 98vw;
+  position: relative;
+  z-index: 2;
+}
+.ev-mic-title {
+  color: #fff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 8px #ff0080, 0 0 2px #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.ev-mic-avatar {
+  position: absolute;
+  left: -90px;
+  top: 30px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00fff0 0%, #ff0080 100%);
+  box-shadow: 0 0 32px #00fff0, 0 0 64px #ff0080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  z-index: 3;
+}
+.ev-mic-avatar-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+  box-shadow: 0 0 16px #fff8;
+}
+.ev-mic-speech {
+  position: absolute;
+  left: 60px;
+  top: 55px;
+  background: linear-gradient(90deg, #00cfff 0%, #1a0022 100%);
+  color: #fff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 1.2em;
+  padding: 0.4em 1.2em;
+  box-shadow: 0 0 16px #00fff0, 0 0 2px #fff;
+  z-index: 4;
+  border: 2px solid #fff3;
+  text-shadow: 0 0 4px #fff, 0 0 2px #00fff0;
+}
+.ev-mic-waveform {
+  width: 100%;
+  height: 80px;
+  margin: 0.5em 0 0.7em 0;
+  background: transparent;
+  border-radius: 1em;
+  box-shadow: 0 0 24px #ff0080, 0 0 2px #fff2;
+  overflow: hidden;
+  position: relative;
+}
+.ev-mic-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  margin-top: 0.7em;
+}
+.ev-mic-timeline {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.ev-mic-time {
+  color: #fff;
+  font-size: 1.1rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  background: rgba(0,0,0,0.3);
+  border-radius: 0.7em;
+  padding: 0.2em 0.8em;
+  box-shadow: 0 0 8px #fff2;
+  margin-right: 0.5em;
+}
+.ev-mic-slider {
+  width: 220px;
+  accent-color: #ff0080;
+  background: linear-gradient(90deg, #ff0080 0%, #00fff0 100%);
+  border-radius: 1em;
+  height: 6px;
+  outline: none;
+  margin: 0 0.5em;
+}
+.ev-mic-download {
+  background: linear-gradient(90deg, #00fff0 0%, #ff0080 100%);
+  color: #fff;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 1.2em;
+  padding: 0.5em 1.6em;
+  box-shadow: 0 0 16px #00fff0, 0 0 2px #fff;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.ev-mic-download svg {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 4px #fff8);
+}
+.ev-mic-download:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 24px #00fff0, 0 0 48px #fff;
+}
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 60% 20%, #ff0080 0%, #3a0027 100%) !important;
+  background-color: #1a0022;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.edgevoice-bg-lights {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+.edgevoice-bg-lights::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at 60% 20%, #ff0080 0%, transparent 70%),
+              radial-gradient(circle at 80% 80%, #00fff0 0%, transparent 70%),
+              radial-gradient(circle at 20% 80%, #ff00e0 0%, transparent 70%);
+  opacity: 0.7;
+  filter: blur(60px);
+  z-index: 1;
+}
+.edgevoice-bg-lights::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: url('data:image/svg+xml;utf8,<svg width="100%25" height="100%25" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="g1" cx="60%" cy="20%" r="80%"><stop offset="0%25" stop-color="%23ff0080"/><stop offset="100%25" stop-color="transparent"/></radialGradient></defs><rect width="100%25" height="100%25" fill="url(%23g1)"/></svg>');
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.edgevoice-header {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 16px #ff0080, 0 0 32px #fff, 0 0 2px #fff;
+}
+
+.edgevoice-top-controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  z-index: 10;
+}
+.edgevoice-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 1.5em;
+  padding: 0.85em 2.2em;
+  background: linear-gradient(90deg, #1a0022 0%, #ff0080 100%);
+  color: #fff;
+  box-shadow: 0 0 16px #ff0080, 0 0 32px #fff, 0 0 2px #fff;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  outline: none;
+  position: relative;
+}
+.edgevoice-btn svg {
+  width: 1.3em;
+  height: 1.3em;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 4px #fff8);
+}
+.edgevoice-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 24px #ff0080, 0 0 48px #fff;
+}
+.edgevoice-btn.selected, .edgevoice-btn:focus {
+  background: linear-gradient(90deg, #ff0080 0%, #1a0022 100%);
+  box-shadow: 0 0 32px #ff0080, 0 0 64px #fff;
+}
